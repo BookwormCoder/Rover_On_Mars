@@ -4,7 +4,10 @@ ctx=canvas.getContext("2d");
 rover_width=100;
 rover_height=90;
 
-background_img="mars.jpg";
+nasa_array=["nasa 1.jpeg","nasa2.jpeg","nasa3.jpeg","nasa4.jpeg"];
+r=Math.floor(Math.random()* 4);
+background_img=nasa_array[r];
+
 rover_image="rover.png";
 
 rover_x=10;
@@ -17,7 +20,7 @@ function add(){
 
     rover_imgTag=new Image();
     rover_imgTag.onload=uploadrover;
-    rover_imgTag,src=rover_image;
+    rover_imgTag.src=rover_image;
 }
 
 function uploadBackground(){
@@ -35,24 +38,58 @@ function my_keydown(e){
     console.log(keyPressed);
 
     if(keyPressed=="37"){
-        //left();
+        left();
         console.log("left");
     }
 
     if(keyPressed=="38"){
-        //up();
+        up();
         console.log("up");
     }
 
     if(keyPressed=="39"){
-        //right();
+        right();
         console.log("right");
     }
 
     if(keyPressed=="40"){
-        //down();
+        down();
         console.log("down");
     }
 
 
+}
+function up(){
+    if(rover_y>=0){
+        rover_y-=10;
+        console.log("When up arrow is pressed x = " + rover_x + " ,y = " + rover_y);
+        uploadBackground();
+        uploadrover();
+    }
+}
+
+function down(){
+    if(rover_y<=500){
+        rover_y+=10;
+        console.log("When down arrow is pressed  x = " + rover_x + " , y = " + rover_y);
+        uploadBackground();
+        uploadrover();
+    }
+}
+
+function left(){
+    if(rover_x>=0){
+        rover_x-=10;
+        console.log("When left arrow is pressed x = " + rover_x + " , y - " + rover_y);
+        uploadBackground();
+        uploadrover();
+    }
+}
+function right(){
+    if(rover_x<=700){
+        rover_x+=10;
+        console.log("When right arrow is pressed x = " + rover_x + " , y - " + rover_y);
+        uploadBackground();
+        uploadrover();
+    }
 }
